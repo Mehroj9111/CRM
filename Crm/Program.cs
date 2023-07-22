@@ -1,14 +1,17 @@
-﻿using Crm.Entities;
+using Crm.Entities;
 using Crm.Services;
 
 
     System.Console.Write("vvedite komandu : ");
 
-string inputStr = Console.ReadLine();
-
-string cmd = (string.IsNullOrWhiteSpace(inputStr) ? "exit" : inputStr);
-bool result1 = (string.IsNullOrWhiteSpace(inputStr) ? true : false);
-if (string.IsNullOrWhiteSpace(inputStr))
+string client = Console.ReadLine();
+if (string.IsNullOrEmpty(client))
+    {
+        throw new ArgumentException("клиент не может быть пустым");
+    }
+string cmd = (string.IsNullOrWhiteSpace(client) ? "exit" : client);
+bool result1 = (string.IsNullOrWhiteSpace(client) ? true : false);
+if (string.IsNullOrWhiteSpace(client))
     cmd = "exit";
 
 ClientService clientService = new();
@@ -21,6 +24,10 @@ void CreateClient()
 {
     System.Console.Write("FirstName : ");
     string firstName = Console.ReadLine();
+     if (string.IsNullOrEmpty(firstName))
+    {
+        throw new ArgumentException("FirstName клиента не может быть пустым");
+    }
     System.Console.Write("LastName : ");
     string lastName = Console.ReadLine();
     System.Console.Write("MiddleName : ");
@@ -46,6 +53,10 @@ void CreateOrder()
 {
     System.Console.Write("Order Name : ");
     string orderName = Console.ReadLine();
+    if (string.IsNullOrEmpty(orderName))
+    {
+        throw new ArgumentException("OrderName клиента не может быть пустым");
+    }
     System.Console.Write("Order Price : ");
     decimal orderPrice = Convert.ToInt32(Console.ReadLine());
 
