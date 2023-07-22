@@ -6,11 +6,4 @@ public sealed class Order
     public decimal OrderPrice { get; set; }
 
 
-    public void Validate()
-     {
-        if (string.IsNullOrEmpty(OrderName))
-        {
-            throw new ArgumentException("FirstName клиента не может быть пустым");
-        }
-     }
 }
